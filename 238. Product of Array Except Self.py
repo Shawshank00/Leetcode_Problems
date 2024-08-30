@@ -1,5 +1,24 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
+
+#SOlution 1:
+        L = len(nums)
+        left = [1] * L
+        right = [1] * L
+        
+        for i in range(1,L):
+            left[i] = left[i-1] * nums[i-1]
+        
+        for i in range(L-2,-1,-1):
+            right[i] = right[i+1] * nums[i+1]
+        
+        for i in range(L):
+            nums[i] = left[i] * right[i]
+        return nums
+        
+        
+        
+#Solution 2:        
         L = len(nums)
         arr = [0] * L
         zeros = []
